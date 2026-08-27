@@ -3,7 +3,7 @@ import {
   Search, UserRound, Monitor, ShoppingCart, Banknote, Megaphone, Truck,
   Code2, Workflow, MapPin, Phone, AtSign, WandSparkles, LayoutDashboard,
   MousePointerClick, ChartNoAxesColumnIncreasing, GraduationCap, ArrowRight,
-  CircleCheck, Circle, Route, BarChart3, Lightbulb, Play
+  CircleCheck, Circle, Route, BarChart3, Lightbulb, Play, ChevronDown, ChevronRight
 } from "lucide-react";
 import { MobileMenu } from "@/components/mobile-menu";
 
@@ -80,15 +80,20 @@ const links = [
 ];
 export function RecommendationPanel() {
   return <section className="recommendations"><div className="shell recommendation-grid">
-    <aside className="recommendation-menu">{menu.map(([Icon,t],i)=><div className={i===0?"rec-menu-item active":"rec-menu-item"} key={t}><Icon size={19}/><span>{t}</span></div>)}</aside>
-    <div className="recommendation-card">{links.map(([a,b])=><a href="#" className="rec-link" key={a}><span><strong>{a}</strong><small>{b}</small></span><ArrowRight size={20}/></a>)}</div>
+    <aside className="recommendation-menu">{menu.map(([Icon,t],i)=><div className={i===0?"rec-menu-item active":"rec-menu-item"} key={t}><Icon size={19}/><span>{t}</span>{i===0&&<ChevronDown size={20} className="rec-menu-chev"/>}</div>)}</aside>
+    <div className="recommendation-card">{links.map(([a,b])=><a href="#" className="rec-link" key={a}><span><strong>{a}</strong><small>{b}</small></span><ArrowRight size={20} className="rec-link__arrow"/><ChevronRight size={20} className="rec-link__chev"/></a>)}</div>
   </div></section>;
 }
 
+const footerNav = ["Услуги","Курсове","Проекти","Контакти","За нас","Кариери"];
+const footerLegal = ["Политика","","Общи условия","Легално","","Карта"];
+
 export function Footer() {
-  return <footer className="footer"><div className="shell footer__inner"><div className="footer__links">
-    {[["Услуги","Политика"],["Курсове",""] ,["Проекти","Общи условия"],["Контакти","Легално"],["За нас",""] ,["Кариери","Карта"]].map(([a,b])=><div key={a}><strong>{a}</strong><span>{b}</span></div>)}
-  </div><img className="footer-logo" src="/assets/benext-mark.png" alt="BeNeXt"/></div></footer>;
+  return <footer className="footer"><div className="shell footer__inner">
+    <div className="footer__nav">{footerNav.map(t=><a href="#" key={t}>{t}</a>)}</div>
+    <img className="footer-logo" src="/assets/benext-mark.png" alt="BeNeXt"/>
+    <div className="footer__legal">{footerLegal.map((t,i)=>t?<a href="#" key={t}>{t}</a>:<span key={i}/>)}</div>
+  </div></footer>;
 }
 
 export function PageEnd({cta=true}:{cta?:boolean}) { return <>{cta&&<BigCTA/>}<RecommendationPanel/><Footer/></> }
