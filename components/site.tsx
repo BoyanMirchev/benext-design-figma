@@ -3,8 +3,9 @@ import {
   Search, UserRound, Monitor, ShoppingCart, Banknote, Megaphone, Truck,
   Code2, Workflow, MapPin, Phone, AtSign, WandSparkles, LayoutDashboard,
   MousePointerClick, ChartNoAxesColumnIncreasing, GraduationCap, ArrowRight,
-  CircleCheck, Circle, Route, BarChart3, Lightbulb, Play, Menu
+  CircleCheck, Circle, Route, BarChart3, Lightbulb, Play
 } from "lucide-react";
+import { MobileMenu } from "@/components/mobile-menu";
 
 export function Header({ overlay = false }: { overlay?: boolean }) {
   return (
@@ -20,7 +21,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
           <button className="icon-btn" aria-label="Профил"><UserRound size={20}/></button>
           <Link href="/contacts" className="button button--primary">Започнете сега</Link>
         </div>
-        <button className="mobile-menu" aria-label="Меню"><Menu/></button>
+        <MobileMenu/>
       </div>
     </header>
   );
