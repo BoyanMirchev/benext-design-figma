@@ -6,6 +6,7 @@ import {
   CircleCheck, Circle, Route, BarChart3, Lightbulb, Play, ChevronDown, ChevronRight
 } from "lucide-react";
 import { MobileMenu } from "@/components/mobile-menu";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 
 export function Header({ overlay = false }: { overlay?: boolean }) {
   return (
@@ -38,9 +39,9 @@ const services = [
 
 export function ServicesStrip() {
   return <section className="home-services section-shadow"><div className="shell">
-    <h2 className="section-title centered">Ние можем да помогнем</h2>
-    <div className="service-grid">{services.map(([Icon,t])=><div className="service-card" key={t}><Icon/><span>{t.split("\n").map((x,i)=><span key={i}>{x}{i===0&&t.includes("\n")?<br/>:null}</span>)}</span></div>)}</div>
-    <div className="centered"><Button href="/services">Научете повече</Button></div>
+    <Reveal as="h2" className="section-title centered">Ние можем да помогнем</Reveal>
+    <Stagger className="service-grid">{services.map(([Icon,t])=><StaggerItem className="service-card" key={t}><Icon/><span>{t.split("\n").map((x,i)=><span key={i}>{x}{i===0&&t.includes("\n")?<br/>:null}</span>)}</span></StaggerItem>)}</Stagger>
+    <Reveal className="centered"><Button href="/services">Научете повече</Button></Reveal>
   </div></section>;
 }
 
@@ -53,10 +54,10 @@ const clientLogos = [
 
 export function Clients() {
   return <section className="clients section-shadow"><div className="shell clients__grid">
-    <div><h2 className="section-title">Нашите клиенти</h2><p>Компаниите, които ни имат доверие.<br/>Станете част от тях.</p></div>
-    <div className="clients__logos">{clientLogos.map(c=>(
-      <div key={c.slug} className="client-logo"><img src={`/assets/clients/${c.slug}.png`} alt={c.name}/></div>
-    ))}</div>
+    <Reveal><h2 className="section-title">Нашите клиенти</h2><p>Компаниите, които ни имат доверие.<br/>Станете част от тях.</p></Reveal>
+    <Stagger className="clients__logos">{clientLogos.map(c=>(
+      <StaggerItem key={c.slug} className="client-logo"><img src={`/assets/clients/${c.slug}.png`} alt={c.name}/></StaggerItem>
+    ))}</Stagger>
   </div></section>;
 }
 
@@ -76,7 +77,7 @@ export function ProjectCard({ project, compact=false }: { project: Project; comp
 }
 
 export function BigCTA() {
-  return <section className="cta-section"><div className="shell"><div className="cta-card"><h2>Нека създадем нещо добро заедно.</h2><Button href="/contacts">Свържете се с нас</Button></div></div></section>;
+  return <section className="cta-section"><div className="shell"><Reveal className="cta-card" y={28}><h2>Нека създадем нещо добро заедно.</h2><Button href="/contacts">Свържете се с нас</Button></Reveal></div></section>;
 }
 
 const menu = [[WandSparkles,"Препоръчано"],[LayoutDashboard,"Стартирай проекта си"],[MousePointerClick,"Достиг на клиенти"],[ChartNoAxesColumnIncreasing,"Автоматизация"],[GraduationCap,"Курсове"]] as const;
@@ -90,7 +91,7 @@ const links = [
 export function RecommendationPanel() {
   return <section className="recommendations"><div className="shell recommendation-grid">
     <aside className="recommendation-menu">{menu.map(([Icon,t],i)=><div className={i===0?"rec-menu-item active":"rec-menu-item"} key={t}><Icon size={19}/><span>{t}</span>{i===0&&<ChevronDown size={20} className="rec-menu-chev"/>}</div>)}</aside>
-    <div className="recommendation-card">{links.map(([a,b])=><a href="#" className="rec-link" key={a}><span><strong>{a}</strong><small>{b}</small></span><ArrowRight size={20} className="rec-link__arrow"/><ChevronRight size={20} className="rec-link__chev"/></a>)}</div>
+    <Stagger className="recommendation-card" amount={0.15}>{links.map(([a,b])=><StaggerItem as="a" href="#" className="rec-link" key={a}><span><strong>{a}</strong><small>{b}</small></span><ArrowRight size={20} className="rec-link__arrow"/><ChevronRight size={20} className="rec-link__chev"/></StaggerItem>)}</Stagger>
   </div></section>;
 }
 
@@ -118,5 +119,5 @@ export function ContactFacts(){return <div className="contact-facts"><div><span>
 
 export function Process(){
  const data=[[Route,"1. Откриване","Опознаваме вашия бизнес, цели и предизвикателства. Така можем да пред��ожим решение, което е съобразено с реалните ви нужди."],[BarChart3,"2. Дефиниране","Създаваме ясна стратегия и план за правилното решение."],[Lightbulb,"3. Разработка","Проектираме, разработваме и интегрираме всичко необходимо: от дизайна и уеб платформата до ecommerce, SEO, реклами, счетоводни, ТРЗ и логистични системи."],[Play,"4. Старт","Следим представянето, отстраняваме евентуални проблеми и при необходимост оптимизираме системата, за да продължава да носи стойност за бизнеса Ви."] ] as const;
- return <section className="process"><div className="shell process__shell"><h2 className="section-title centered">Нашият процес</h2>{data.map(([Icon,t,p],i)=><div className={`process-row ${i%2?"right":"left"}`} key={t}><div className="process-icon"><Icon/></div><div className="process-copy"><h3>{t}</h3><p>{p}</p>{i<3&&<div className="process-dots">•••</div>}</div></div>)}</div></section>
+ return <section className="process"><div className="shell process__shell"><Reveal as="h2" className="section-title centered">Нашият процес</Reveal><Stagger amount={0.2} gap={0.12}>{data.map(([Icon,t,p],i)=><StaggerItem className={`process-row ${i%2?"right":"left"}`} key={t}><div className="process-icon"><Icon/></div><div className="process-copy"><h3>{t}</h3><p>{p}</p>{i<3&&<div className="process-dots">•••</div>}</div></StaggerItem>)}</Stagger></div></section>
 }

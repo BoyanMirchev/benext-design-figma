@@ -97,6 +97,14 @@
    MOTION SYSTEM — entrances, micro-interactions, reduced motion
    ============================================================ */
 
+/* wrapper cells introduced for staggered reveals must not alter existing layout */
+.featured-grid__cell,.projects-grid__cell{display:flex}
+.featured-grid__cell>.project-card,.projects-grid__cell>.project-card{width:100%}
+.projects-grid__cell>.project-card{min-height:324px}
+.filter-cell{display:inline-flex}
+.more-projects__rail .more-projects__cell{flex:none;width:353px;min-width:353px}
+.more-projects__rail .more-projects__cell>.project-card{width:353px;min-width:353px}
+
 /* one-shot entrance keyframes */
 @keyframes heroBg{from{transform:scale(1.03)}to{transform:scale(1)}}
 @keyframes headerIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}

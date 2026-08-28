@@ -1,4 +1,5 @@
 import { Header, ServicesStrip, Clients, ProjectCard, projects, Process, BigCTA, RecommendationPanel, Footer, Button } from "@/components/site";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 
 export default function HomePage(){return <main>
   <div className="home-hero-wrap"><Header overlay/><section className="home-hero"><div className="shell home-hero__content">
@@ -7,11 +8,11 @@ export default function HomePage(){return <main>
     <div className="button-row"><Button href="/services">Разгледайте услугите</Button><Button href="/contacts" secondary>Свържете се с нас</Button></div>
   </div></section></div>
   <ServicesStrip/><Clients/>
-  <section className="featured"><div className="shell"><div className="section-head"><h2 className="section-title">Проекти, от които се гордеем</h2><LinkButton/></div>
-    <div className="featured-grid"><ProjectCard compact project={projects[3]}/><ProjectCard compact project={projects[1]}/><ProjectCard compact project={projects[0]}/></div>
+  <section className="featured"><div className="shell"><Reveal className="section-head"><h2 className="section-title">Проекти, от които се гордеем</h2><LinkButton/></Reveal>
+    <Stagger className="featured-grid" gap={0.1}>{[projects[3],projects[1],projects[0]].map(p=><StaggerItem className="featured-grid__cell" key={p.slug}><ProjectCard compact project={p}/></StaggerItem>)}</Stagger>
   </div></section>
   <Process/>
-  <section className="technologies section-shadow"><h2 className="section-title centered">Технологии, които използваме</h2><div className="tech-row">{tech.map(t=><div key={t.name}><img src={`/assets/tech/${t.slug}.svg`} alt={t.name}/></div>)}</div></section>
+  <section className="technologies section-shadow"><Reveal as="h2" className="section-title centered">Технологии, които използваме</Reveal><Stagger className="tech-row" gap={0.05} amount={0.3}>{tech.map(t=><StaggerItem key={t.name}><img src={`/assets/tech/${t.slug}.svg`} alt={t.name}/></StaggerItem>)}</Stagger></section>
   <BigCTA/><RecommendationPanel/><Footer/>
 </main>}
 function LinkButton(){return <a className="soft-pill" href="/projects">Разгледайте всички <span>⦿</span></a>}
