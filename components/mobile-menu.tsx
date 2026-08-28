@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Search, X } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 const mobileLinks: { label: string; href: string }[] = [
   { label: "Акаунт", href: "#" },
@@ -17,6 +20,7 @@ const mobileLinks: { label: string; href: string }[] = [
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     if (!open) return;
@@ -49,8 +53,19 @@ export function MobileMenu() {
         </span>
       </button>
 
+      <AnimatePresence>
       {open && (
-        <div id="mobile-menu-panel" className="mobile-panel" role="dialog" aria-modal="true" aria-label="Меню">
+        <motion.div
+          id="mobile-menu-panel"
+          className="mobile-panel"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Меню"
+          initial={reduce ? { opacity: 0 } : { opacity: 0, x: "100%" }}
+          animate={reduce ? { opacity: 1 } : { opacity: 1, x: 0 }}
+          exit={reduce ? { opacity: 0 } : { opacity: 0, x: "100%" }}
+          transition={{ duration: 0.32, ease: EASE }}
+        >
           <div className="mobile-panel__top">
             <Link href="/" className="mobile-panel__logo" aria-label="BeNeXt" onClick={() => setOpen(false)}>
               <img src="/assets/benext-mark.png" alt="BeNeXt" />
@@ -65,13 +80,24 @@ export function MobileMenu() {
             <Search size={19.5} strokeWidth={1.5} aria-hidden="true" />
           </div>
 
-          <nav className="mobile-panel__nav" aria-label="Основна навигация">
+          <motion.nav
+            className="mobile-panel__nav"
+            aria-label="Основна навигация"
+            initial="hidden"
+            animate="show"
+            variants={reduce ? undefined : { show: { transition: { staggerChildren: 0.05, delayChildren: 0.12 } } }}
+          >
             {mobileLinks.map((link) => (
-              <Link key={link.label} href={link.href} onClick={() => setOpen(false)}>
-                {link.label}
-              </Link>
+              <motion.div
+                key={link.label}
+                variants={reduce ? undefined : { hidden: { opacity: 0, x: 16 }, show: { opacity: 1, x: 0, transition: { duration: 0.35, ease: EASE } } }}
+              >
+                <Link href={link.href} onClick={() => setOpen(false)}>
+                  {link.label}
+                </Link>
+              </motion.div>
             ))}
-          </nav>
+          </motion.nav>
 
           <div className="mobile-panel__legal">
             <Link href="#" onClick={() => setOpen(false)}>
@@ -81,8 +107,9 @@ export function MobileMenu() {
               Политика
             </Link>
           </div>
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </>
   );
 }
