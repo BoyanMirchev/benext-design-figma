@@ -11,7 +11,14 @@ export default function HomePage(){return <main>
     <div className="featured-grid"><ProjectCard compact project={projects[3]}/><ProjectCard compact project={projects[1]}/><ProjectCard compact project={projects[0]}/></div>
   </div></section>
   <Process/>
-  <section className="technologies section-shadow"><h2 className="section-title centered">Технологии, които използваме</h2><div className="tech-row">{Array.from({length:11}).map((_,i)=><div key={i}/>)}</div></section>
+  <section className="technologies section-shadow"><h2 className="section-title centered">Технологии, които използваме</h2><div className="tech-row">{tech.map(t=><div key={t.name}><img src={`/assets/tech/${t.slug}.svg`} alt={t.name}/></div>)}</div></section>
   <BigCTA/><RecommendationPanel/><Footer/>
 </main>}
 function LinkButton(){return <a className="soft-pill" href="/projects">Разгледайте всички <span>⦿</span></a>}
+
+const tech = [
+  {name:"Python",slug:"python"},{name:"Next.js",slug:"nextjs"},{name:"Node.js",slug:"nodejs"},
+  {name:"Go",slug:"go"},{name:"PostgreSQL",slug:"postgresql"},{name:"MongoDB",slug:"mongodb"},
+  {name:"TypeScript",slug:"typescript"},{name:"React",slug:"react"},{name:"Docker",slug:"docker"},
+  {name:"Kubernetes",slug:"kubernetes"},
+];
