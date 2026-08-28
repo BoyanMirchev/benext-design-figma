@@ -44,10 +44,19 @@ export function ServicesStrip() {
   </div></section>;
 }
 
+const clientLogos = [
+  {name:"Farm Academy",slug:"farm-academy"},
+  {name:"Madix Groundbaits",slug:"madix"},
+  {name:"КЕШ",slug:"kesh"},
+  {name:"Au Nature Guest House",slug:"aunature"},
+];
+
 export function Clients() {
   return <section className="clients section-shadow"><div className="shell clients__grid">
     <div><h2 className="section-title">Нашите клиенти</h2><p>Компаниите, които ни имат доверие.<br/>Станете част от тях.</p></div>
-    <div className="client-logo-image"><img src="/assets/client-logos.png" alt="Клиенти на BeNeXt"/></div>
+    <div className="clients__logos">{clientLogos.map(c=>(
+      <div key={c.slug} className="client-logo"><img src={`/assets/clients/${c.slug}.png`} alt={c.name}/></div>
+    ))}</div>
   </div></section>;
 }
 
@@ -108,6 +117,6 @@ export function CheckItem({children,checked=false}:{children:React.ReactNode;che
 export function ContactFacts(){return <div className="contact-facts"><div><span><MapPin/></span><a>Княз Борис 1 127, София</a></div><div><span><Phone/></span><a>+359 888 82 634</a></div><div><span><AtSign/></span><a>benextbg@gmail.com</a></div></div>}
 
 export function Process(){
- const data=[[Route,"1. Откриване","Опознаваме вашия бизнес, цели и предизвикателства. Така можем да предложим решение, което е съобразено с реалните ви нужди."],[BarChart3,"2. Дефиниране","Създаваме ясна стратегия и план за правилното решение."],[Lightbulb,"3. Разработка","Проектираме, разработваме и интегрираме всичко необходимо: от дизайна и уеб платформата до ecommerce, SEO, реклами, счетоводни, ТРЗ и логистични системи."],[Play,"4. Старт","Следим представянето, отстраняваме евентуални проблеми и при необходимост оптимизираме системата, за да продължава да носи стойност за бизнеса Ви."] ] as const;
+ const data=[[Route,"1. Откриване","Опознаваме вашия бизнес, цели и предизвикателства. Така можем да пред��ожим решение, което е съобразено с реалните ви нужди."],[BarChart3,"2. Дефиниране","Създаваме ясна стратегия и план за правилното решение."],[Lightbulb,"3. Разработка","Проектираме, разработваме и интегрираме всичко необходимо: от дизайна и уеб платформата до ecommerce, SEO, реклами, счетоводни, ТРЗ и логистични системи."],[Play,"4. Старт","Следим представянето, отстраняваме евентуални проблеми и при необходимост оптимизираме системата, за да продължава да носи стойност за бизнеса Ви."] ] as const;
  return <section className="process"><div className="shell process__shell"><h2 className="section-title centered">Нашият процес</h2>{data.map(([Icon,t,p],i)=><div className={`process-row ${i%2?"right":"left"}`} key={t}><div className="process-icon"><Icon/></div><div className="process-copy"><h3>{t}</h3><p>{p}</p>{i<3&&<div className="process-dots">•••</div>}</div></div>)}</div></section>
 }
