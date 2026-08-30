@@ -3,7 +3,7 @@ import { Header, Footer } from "@/components/site";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { PlayCircle, CircleCheck, BookOpen } from "lucide-react";
 
-export const courses = [
+const courses = [
   { slug: "bazovo", title: "Дигитални умения - базово ниво" },
   { slug: "sredno", title: "Дигитални умения - средно ниво" },
   { slug: "naprednalo", title: "Дигитални умения - напреднало ниво" },
