@@ -11,7 +11,7 @@ const mobileLinks: { label: string; href: string }[] = [
   { label: "Акаунт", href: "#" },
   { label: "Начало", href: "/" },
   { label: "Услуги", href: "/services" },
-  { label: "Курсове", href: "#" },
+  { label: "Курсове", href: "/courses" },
   { label: "Проекти", href: "/projects" },
   { label: "Контакти", href: "/contacts" },
   { label: "За нас", href: "/about" },
