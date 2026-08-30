@@ -8,14 +8,14 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const mobileLinks: { label: string; href: string }[] = [
-  { label: "Акаунт", href: "#" },
+  { label: "Акаунт", href: "/courses/dashboard" },
   { label: "Начало", href: "/" },
   { label: "Услуги", href: "/services" },
   { label: "Курсове", href: "/courses" },
   { label: "Проекти", href: "/projects" },
+  { label: "Кариери", href: "/careers" },
   { label: "Контакти", href: "/contacts" },
   { label: "За нас", href: "/about" },
-  { label: "Кариери", href: "#" },
 ];
 
 export function MobileMenu() {

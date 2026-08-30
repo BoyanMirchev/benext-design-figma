@@ -38,7 +38,7 @@
   .mobile-panel{position:fixed;inset:0;z-index:100;width:100vw;min-height:100dvh;background:#fff;backdrop-filter:blur(8px);color:#030011;padding:16px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;overflow-y:auto}
   .mobile-panel__top{display:flex;align-items:center;justify-content:space-between}.mobile-panel__logo,.mobile-panel__logo img{width:20px;height:32px;object-fit:contain}.mobile-panel__close{width:24px;height:24px;display:grid;place-items:center;padding:0;background:none;border:0;color:#030011;cursor:pointer}
   .mobile-panel__search{position:relative;display:flex;align-items:center;width:100%;height:46px;border:1px solid #464648;border-radius:32px;padding:10px 16px}.mobile-panel__search input{flex:1;min-width:0;height:100%;border:0;outline:0;background:transparent;color:#030011;font-family:'M PLUS 1p',Arial,sans-serif;font-size:16px;font-weight:400;-webkit-appearance:none;appearance:none}.mobile-panel__search input::placeholder{color:#464648;font-family:'M PLUS 1p',Arial,sans-serif;font-size:16px;font-weight:400}.mobile-panel__search svg{flex:none;color:#464648;margin-left:8px}
-  .mobile-panel__nav{display:flex;flex-direction:column;gap:16px;font-family:'M PLUS 1p',Arial,sans-serif;font-weight:800;font-size:32px;line-height:normal;color:#030011}
+  .mobile-panel__nav{display:flex;flex-direction:column;gap:16px;font-family:'M PLUS 1p',Arial,sans-serif;font-weight:800;font-size:32px;line-height:normal;color:#030011}.mobile-panel__nav a{display:block;width:fit-content;padding:2px 0}
   .mobile-panel__legal{display:flex;flex-direction:column;gap:16px;font-family:'M PLUS 1p',Arial,sans-serif;font-weight:400;font-size:16px;color:#030011}
 }
 

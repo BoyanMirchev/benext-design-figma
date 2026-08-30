@@ -15,7 +15,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
         <Link href="/" className="logo" aria-label="BeNeXt"><img src="/assets/benext-mark.png" alt="BeNeXt" /></Link>
         <nav className="nav">
           <Link href="/services">Услуги</Link><Link href="/courses">Курсове</Link><Link href="/projects">Проекти</Link>
-          <a href="#">Кариери</a><Link href="/contacts">Контакти</Link><Link href="/about">За нас</Link>
+          <Link href="/careers">Кариери</Link><Link href="/contacts">Контакти</Link><Link href="/about">За нас</Link>
         </nav>
         <div className="header__actions">
           <button className="icon-btn" aria-label="Търсене"><Search size={20}/></button>
@@ -110,7 +110,7 @@ export function PageEnd({cta=true}:{cta?:boolean}) { return <>{cta&&<BigCTA/>}<R
 
 export const serviceTop = [
   {icon:Monitor,title:"Front end разработка",text:"Създаваме интерактивни и динамични потребителски интерфейси, използвайки най-новите технологии. Всеки проект е оптимизиран за скорост и производителност."},
-  {icon:Code2,title:"Back-end разработка",text:"Разработваме стабилни и сигурни сървърни решения, които поддържат вашите уеб приложения. Използваме надеждни технологии за гарантирана маща��ируемост."},
+  {icon:Code2,title:"Back-end разработка",text:"Разработваме стабилни и сигурни сървърни решения, които поддържат вашите уеб приложения. Използваме надеждни технологии за гарантира��а маща��ируемост."},
   {icon:Workflow,title:"Анализ на данни",text:"Анализираме данните, за да разберем какво работи, къде се губят ресурси и кои са най-добрите възможности за растеж."}
 ] as const;
 
