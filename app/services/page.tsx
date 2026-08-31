@@ -2,7 +2,7 @@ import { Header, serviceTop, Clients, Button, CheckItem, PageEnd } from "@/compo
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 
 export default function ServicesPage(){return <main>
-  <div className="services-hero-wrap"><Header overlay/><section className="services-hero"><div className="shell services-hero__inner">
+  <Header overlay/><div className="services-hero-wrap"><section className="services-hero"><div className="shell services-hero__inner">
     <h1>От идея до завършен продукт,<br/>ние сме тук да Ви съдействаме</h1>
     <p>Няма твърде голям или твърде малък клиент или задача. Ако искате да развиете бранда си, сте<br/>на правилното място. Поемаме всичко от творчески проекти без програмиране, без забавяния и при<br/>най-малък екип.</p>
     <Stagger className="service-top-card" gap={0.1} delay={0.35}>{serviceTop.map(({icon:Icon,title,text})=><StaggerItem key={title}><div className="blue-circle"><Icon/></div><h3>{title}</h3><p>{text}</p></StaggerItem>)}</Stagger>
