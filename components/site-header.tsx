@@ -8,7 +8,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const hero = overlay
-      ? document.querySelector<HTMLElement>(".home-hero-wrap, .services-hero-wrap")
+      ? document.querySelector<HTMLElement>(".home-hero-wrap, .services-hero-wrap, .detail-hero")
       : null;
     const onScroll = () => {
       const threshold = hero ? Math.max(hero.offsetHeight - 80, 24) : 24;
