@@ -19,7 +19,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
         </nav>
         <div className="header__actions">
           <button className="icon-btn" aria-label="Търсене"><Search size={20}/></button>
-          <button className="icon-btn" aria-label="Профил"><UserRound size={20}/></button>
+          <Link href="/login" className="icon-btn" aria-label="Профил"><UserRound size={20}/></Link>
           <Link href="/contacts" className="button button--primary">Започнете сега</Link>
         </div>
         <MobileMenu/>
