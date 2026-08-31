@@ -1,11 +1,23 @@
 import { Header, Button, ProjectCard, projects, PageEnd } from "./site";
 import { Reveal, Stagger, StaggerItem } from "./motion";
+import { Database } from "lucide-react";
 
 type Detail = {
   name:string; image:string; intro:string;
   about:string; task:string; visual:string; extraTitle?:string; extra?:string; result:string;
   hero?:string; shots?:string[];
 };
+
+const TECH:{name:string;src?:string}[] = [
+  {name:"Next.js",src:"/assets/tech/nextjs.svg"},
+  {name:"React",src:"/assets/tech/react.svg"},
+  {name:"TypeScript",src:"/assets/tech/typescript.svg"},
+  {name:"Tailwind CSS",src:"/assets/tech/tailwind.svg"},
+  {name:"PostgreSQL",src:"/assets/tech/postgresql.svg"},
+  {name:"Neon",src:"/assets/tech/neon.svg"},
+  {name:"SQL"},
+  {name:"Blob",src:"/assets/tech/blob.svg"},
+];
 
 export function ProjectDetail({d}:{d:Detail}){
   const shots = d.shots && d.shots.length ? d.shots : [d.image];
@@ -14,7 +26,7 @@ export function ProjectDetail({d}:{d:Detail}){
   return <main className="detail-page"><Header overlay/><div className="detail-hero" style={{backgroundImage:`linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(${d.hero||d.image})`}}><div className="shell detail-hero__content"><h1>{d.name}</h1><p>{d.intro}</p><Button href="#">Към уебсайта</Button></div></div>
   <DetailRow title="За компанията" text={d.about} image={at(0)}/>
   <DetailGalleryText title="Нашата задача" text={d.task} images={trio(1)} flip/>
-  <section className="tech-mini"><Reveal as="h2">Използвани технологии</Reveal><Stagger as="div" gap={0.05} amount={0.4}>{Array.from({length:7}).map((_,i)=><StaggerItem as="span" key={i}/>)}</Stagger></section>
+  <section className="tech-mini"><Reveal as="h2">Използвани технологии</Reveal><Stagger as="div" gap={0.05} amount={0.4}>{TECH.map(t=><StaggerItem as="span" className="tech-chip" key={t.name}>{t.src?<img src={t.src||"/placeholder.svg"} alt={t.name}/>:<Database aria-hidden strokeWidth={1.5}/>}<em>{t.name}</em></StaggerItem>)}</Stagger></section>
   <DetailGalleryText title="Визуална концепция" text={d.visual} images={trio(4)}/>
   {d.extra&&<DetailGalleryText title={d.extraTitle||"Административен панел"} text={d.extra} images={trio(7)} flip/>}
   <section className="result-strip"><Reveal y={24}><h2>Резултатът</h2><p>{d.result}</p></Reveal></section>
