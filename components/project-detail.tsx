@@ -7,7 +7,7 @@ type Detail = {
 };
 
 export function ProjectDetail({d}:{d:Detail}){
-  return <main className="detail-page"><div className="detail-hero" style={{backgroundImage:`linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(${d.image})`}}><Header overlay/><div className="shell detail-hero__content"><h1>{d.name}</h1><p>{d.intro}</p><Button href="#">Към уебсайта</Button></div></div>
+  return <main className="detail-page"><Header overlay/><div className="detail-hero" style={{backgroundImage:`linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(${d.image})`}}><div className="shell detail-hero__content"><h1>{d.name}</h1><p>{d.intro}</p><Button href="#">Към уебсайта</Button></div></div>
   <DetailRow title="За компанията" text={d.about} image={d.image}/>
   <DetailGalleryText title="Нашата задача" text={d.task} image={d.image} flip/>
   <section className="tech-mini"><Reveal as="h2">Използвани технологии</Reveal><Stagger as="div" gap={0.05} amount={0.4}>{Array.from({length:7}).map((_,i)=><StaggerItem as="span" key={i}/>)}</Stagger></section>
