@@ -2,7 +2,7 @@ import { Header, ServicesStrip, Clients, ProjectCard, projects, Process, BigCTA,
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 
 export default function HomePage(){return <main>
-  <div className="home-hero-wrap"><Header overlay/><section className="home-hero"><div className="shell home-hero__content">
+  <Header overlay/><div className="home-hero-wrap"><section className="home-hero"><div className="shell home-hero__content">
     <h1><span>Дигитални решения,</span> които <br/>развиват Вашия бизнес на <br/>друго ниво</h1>
     <p>Ние помагаме на бизнесите да растат с модерни и красиви уебсайтове, <br/>eCommerce и интелигентни системи.</p>
     <div className="button-row"><Button href="/services">Разгледайте услугите</Button><Button href="/contacts" secondary>Свържете се с нас</Button></div>
