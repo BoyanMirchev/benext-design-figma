@@ -7,11 +7,21 @@ import { MobileMenu } from "@/components/mobile-menu";
 export function Header({ overlay = false }: { overlay?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const hero = overlay
+      ? document.querySelector<HTMLElement>(".home-hero-wrap, .services-hero-wrap")
+      : null;
+    const onScroll = () => {
+      const threshold = hero ? Math.max(hero.offsetHeight - 80, 24) : 24;
+      setScrolled(window.scrollY > threshold);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [overlay]);
   const cls = ["header", overlay && "header--overlay", scrolled && "header--stuck"].filter(Boolean).join(" ");
   return (
     <header className={cls}>
