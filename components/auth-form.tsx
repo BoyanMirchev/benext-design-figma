@@ -19,6 +19,25 @@ export function AuthForm({ mode }: { mode: Mode }) {
   const [agree, setAgree] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [socialLoading, setSocialLoading] = useState<"google" | "facebook" | null>(null);
+
+  async function handleSocial(provider: "google" | "facebook") {
+    setError(null);
+    setSocialLoading(provider);
+    try {
+      const { error } = await authClient.signIn.social({
+        provider,
+        callbackURL: "/",
+      });
+      if (error) {
+        setError("Влизането с този доставчик все още не е налично.");
+        setSocialLoading(null);
+      }
+    } catch {
+      setError("Възникна грешка при влизането. Опитайте отново.");
+      setSocialLoading(null);
+    }
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -154,8 +173,30 @@ export function AuthForm({ mode }: { mode: Mode }) {
         </form>
 
         <div className="auth__social">
-          <button type="button" className="auth-social-btn">{isLogin ? "Вход с Google" : "Регистрация с Google"}</button>
-          <button type="button" className="auth-social-btn">{isLogin ? "Вход с Facebook" : "Регистрация с Facebook"}</button>
+          <button
+            type="button"
+            className="auth-social-btn"
+            onClick={() => handleSocial("google")}
+            disabled={socialLoading !== null}
+          >
+            {socialLoading === "google"
+              ? "Пренасочване…"
+              : isLogin
+                ? "Вход с Google"
+                : "Регистрация с Google"}
+          </button>
+          <button
+            type="button"
+            className="auth-social-btn"
+            onClick={() => handleSocial("facebook")}
+            disabled={socialLoading !== null}
+          >
+            {socialLoading === "facebook"
+              ? "Пренасочване…"
+              : isLogin
+                ? "Вход с Facebook"
+                : "Регистрация с Facebook"}
+          </button>
         </div>
 
         <div className="auth__links">
