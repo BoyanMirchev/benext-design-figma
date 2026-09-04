@@ -32,7 +32,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
           <Link href="/careers">Кариери</Link><Link href="/contacts">Контакти</Link><Link href="/about">За нас</Link>
         </nav>
         <div className="header__actions">
-          <button className="icon-btn" aria-label="Търсене"><Search size={20}/></button>
+          <Link href="/search" className="icon-btn" aria-label="Търсене"><Search size={20}/></Link>
           <Link href="/login" className="icon-btn" aria-label="Профил"><UserRound size={20}/></Link>
           <Link href="/contacts" className="button button--primary">Започнете сега</Link>
         </div>
