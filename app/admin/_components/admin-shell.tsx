@@ -14,6 +14,8 @@ import {
   ChevronDown,
   ChevronUp,
   LogOut,
+  MoreHorizontal,
+  X,
 } from "lucide-react"
 
 type Course = { id: number; title: string }
@@ -34,6 +36,7 @@ export function AdminShell({
   const [coursesOpen, setCoursesOpen] = useState(
     pathname.startsWith("/admin/courses"),
   )
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
   const isCourses = pathname.startsWith("/admin/courses")
 
@@ -125,7 +128,23 @@ export function AdminShell({
   return (
     <div className="admin-scope">
       <div className="admin-shell">
-        <aside className="admin-sidebar">
+        {mobileNavOpen && (
+          <div className="admin-sidebar__backdrop" onClick={() => setMobileNavOpen(false)} />
+        )}
+        <aside
+          className={mobileNavOpen ? "admin-sidebar admin-sidebar--open" : "admin-sidebar"}
+          onClick={(e) => {
+            const target = e.target as HTMLElement
+            if (target.closest("a")) setMobileNavOpen(false)
+          }}
+        >
+          <button
+            className="admin-sidebar__close"
+            aria-label="Затвори менюто"
+            onClick={() => setMobileNavOpen(false)}
+          >
+            <X strokeWidth={1.8} />
+          </button>
           <div className="admin-brand">
             <div className="admin-brand__logo">
               <CapIcon />
@@ -165,6 +184,9 @@ export function AdminShell({
               </div>
             </div>
             <div className="admin-mobile-header__actions">
+              <button aria-label="Отвори менюто" onClick={() => setMobileNavOpen(true)}>
+                <MoreHorizontal strokeWidth={1.8} />
+              </button>
               <button aria-label="Изход" onClick={logout}>
                 <LogOut strokeWidth={1.8} />
               </button>

@@ -12,15 +12,34 @@ async function requireAdmin() {
   return current
 }
 
-export async function createCourse() {
+// ---- Reads ----
+export async function listCourses() {
+  return db.select().from(courses).orderBy(asc(courses.position))
+}
+
+export async function getCourse(id: number) {
+  const rows = await db.select().from(courses).where(eq(courses.id, id)).limit(1)
+  return rows[0] ?? null
+}
+
+export async function listLessons(courseId: number) {
+  return db
+    .select()
+    .from(lessons)
+    .where(eq(lessons.courseId, courseId))
+    .orderBy(asc(lessons.position))
+}
+
+// ---- Courses ----
+export async function createCourse(data: { title: string; description: string; status: string }) {
   await requireAdmin()
   const max = await db
     .select({ v: sql<number>`coalesce(max(${courses.position}), -1)` })
     .from(courses)
   await db.insert(courses).values({
-    title: "Име на курс",
-    description: "Описание",
-    status: "draft",
+    title: data.title,
+    description: data.description,
+    status: data.status,
     position: (max[0]?.v ?? -1) + 1,
   })
   revalidatePath("/admin/courses")
@@ -64,7 +83,7 @@ export async function moveCourse(id: number, dir: "up" | "down") {
 }
 
 // ---- Lessons ----
-export async function createLesson(courseId: number) {
+export async function createLesson(courseId: number, title: string) {
   await requireAdmin()
   const max = await db
     .select({ v: sql<number>`coalesce(max(${lessons.position}), 0)` })
@@ -72,7 +91,7 @@ export async function createLesson(courseId: number) {
     .where(eq(lessons.courseId, courseId))
   await db.insert(lessons).values({
     courseId,
-    title: "Име на урок",
+    title,
     type: "video",
     position: (max[0]?.v ?? 0) + 1,
   })

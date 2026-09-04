@@ -278,6 +278,7 @@
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .admin-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(34, 144, 255, 0.15); }
+.admin-card__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 24px; }
 .admin-empty {
   background: #b8b8b8; color: #2a2a2a; border-radius: 16px;
   min-height: 72px; display: grid; place-items: center; font-size: 20px; text-align: center; padding: 16px;
@@ -288,6 +289,49 @@
 .admin-back button { background: none; border: 0; padding: 0; cursor: pointer; color: var(--ink); display: grid; place-items: center; }
 .admin-back svg { width: 30px; height: 30px; }
 
+/* ---------- Select in dialogs ---------- */
+.admin-field select {
+  width: 100%;
+  height: 54px;
+  border: 1px solid #464648;
+  border-radius: 32px;
+  padding: 10px 22px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 17px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.admin-field select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(34, 144, 255, 0.15); }
+
+/* ---------- Ghost CTA ---------- */
+.admin-cta--ghost {
+  background: #eef1f6;
+  color: var(--ink);
+  box-shadow: none;
+}
+
+/* ---------- Modal ---------- */
+.admin-modal { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 24px; }
+.admin-modal__backdrop { position: absolute; inset: 0; background: rgba(2, 17, 116, 0.28); backdrop-filter: blur(2px); }
+.admin-modal__card {
+  position: relative; width: min(520px, 100%); background: #fff;
+  border-radius: 20px; box-shadow: var(--shadow); padding: 26px 28px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.admin-modal__head { display: flex; align-items: center; justify-content: space-between; }
+.admin-modal__head h2 { font-size: 26px; margin: 0; }
+.admin-modal__head button { background: none; border: 0; cursor: pointer; color: var(--ink); display: grid; place-items: center; }
+.admin-modal__head svg { width: 24px; height: 24px; }
+.admin-modal form { display: flex; flex-direction: column; gap: 18px; }
+.admin-modal__foot { display: flex; justify-content: flex-end; gap: 14px; margin-top: 4px; }
+.admin-modal__foot .admin-cta { min-height: 52px; font-size: 16px; padding: 0 24px; }
+
+/* ---------- Sidebar mobile drawer bits (desktop defaults) ---------- */
+.admin-sidebar__close { display: none; }
+.admin-sidebar__backdrop { display: none; }
+
 /* ---------- Mobile header (hidden on desktop) ---------- */
 .admin-mobile-header { display: none; }
 
@@ -296,6 +340,35 @@
    ========================================================================== */
 @media (max-width: 1023px) {
   .admin-sidebar { display: none; }
+  .admin-sidebar--open {
+    display: flex;
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 70;
+    width: min(320px, 88vw);
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.25);
+  }
+  .admin-sidebar__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 65;
+    background: rgba(2, 17, 116, 0.28);
+  }
+  .admin-sidebar--open .admin-sidebar__close {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 18px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background: none;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .admin-sidebar--open .admin-sidebar__close svg { width: 26px; height: 26px; }
   .admin-main { padding: 20px 20px 48px; }
   .admin-mobile-header {
     display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;
