@@ -76,14 +76,14 @@ export function RecommendationPanel() {
   </div></section>;
 }
 
-const footerNav = ["Услуги","Курсове","Проекти","Контакти","За нас","Кариери"];
-const footerLegal = ["Политика","","Общи условия","Легално","","Карта"];
+const footerNav = [["Услуги","/services"],["Курсове","/courses"],["Проекти","/projects"],["Контакти","/contacts"],["За нас","/about"],["Кариери","/careers"]] as const;
+const footerLegal = [["Политика","/privacy"],["Общи условия","/terms"],["Легално","/legal"],["Карта","/sitemap"]] as const;
 
 export function Footer() {
   return <footer className="footer"><div className="shell footer__inner">
-    <div className="footer__nav">{footerNav.map(t=><a href="#" key={t}>{t}</a>)}</div>
+    <nav className="footer__nav" aria-label="Футър навигация">{footerNav.map(([label,href])=><Link href={href} key={label}>{label}</Link>)}</nav>
     <img className="footer-logo" src="/assets/benext-mark.png" alt="BeNeXt"/>
-    <div className="footer__legal">{footerLegal.map((t,i)=>t?<a href="#" key={t}>{t}</a>:<span key={i}/>)}</div>
+    <nav className="footer__legal" aria-label="Правна информация">{footerLegal.map(([label,href])=><Link href={href} key={label}>{label}</Link>)}</nav>
   </div></footer>;
 }
 
@@ -91,7 +91,7 @@ export function PageEnd({cta=true}:{cta?:boolean}) { return <>{cta&&<BigCTA/>}<R
 
 export const serviceTop = [
   {icon:Monitor,title:"Front end разработка",text:"Създаваме интерактивни и динамични потребителски интерфейси, използвайки най-новите технологии. Всеки проект е оптимизиран за скорост и производителност."},
-  {icon:Code2,title:"Back-end разработка",text:"Разработваме стабилни и сигурни сървърни решения, които поддържат вашите уеб приложения. Използваме надеждни технологии за гарантира��а маща��ируемост."},
+  {icon:Code2,title:"Back-end разработка",text:"Разработваме стабилни и сигурни сървърни решения, които поддържат вашите уеб приложения. Използваме надеждни технологии за гарантирана мащабируемост."},
   {icon:Workflow,title:"Анализ на данни",text:"Анализираме данните, за да разберем какво работи, къде се губят ресурси и кои са най-добрите възможности за растеж."}
 ] as const;
 
@@ -99,6 +99,6 @@ export function CheckItem({children,checked=false}:{children:React.ReactNode;che
 export function ContactFacts(){return <div className="contact-facts"><div><span><MapPin/></span><a>Княз Борис 1 127, София</a></div><div><span><Phone/></span><a>+359 888 82 634</a></div><div><span><AtSign/></span><a>benextbg@gmail.com</a></div></div>}
 
 export function Process(){
- const data=[[Route,"1. Откриване","Опознаваме вашия бизнес, цели и предизвикателства. Така можем да пред��ожим решение, което е съобразено с реалните ви нужди."],[BarChart3,"2. Дефиниране","Създаваме ясна стратегия и план за правилното решение."],[Lightbulb,"3. Разработка","Проектираме, разработваме и интегрираме всичко необходимо: от дизайна и уеб платформата до ecommerce, SEO, реклами, счетоводни, ТРЗ и логистични системи."],[Play,"4. Старт","Следим представянето, отстраняваме евентуални проблеми и при необходимост оптимизираме системата, за да продължава да носи стойност за бизнеса Ви."] ] as const;
+ const data=[[Route,"1. Откриване","Опознаваме вашия бизнес, цели и предизвикателства. Така можем да предложим решение, което е съобразено с реалните ви нужди."],[BarChart3,"2. Дефиниране","Създаваме ясна стратегия и план за правилното решение."],[Lightbulb,"3. Разработка","Проектираме, разработваме и интегрираме всичко необходимо: от дизайна и уеб платформата до ecommerce, SEO, реклами, счетоводни, ТРЗ и логистични системи."],[Play,"4. Старт","Следим представянето, отстраняваме евентуални проблеми и при необходимост оптимизираме системата, за да продължава да носи стойност за бизнеса Ви."] ] as const;
  return <section className="process"><div className="shell process__shell"><Reveal as="h2" className="section-title centered">Нашият процес</Reveal><Stagger amount={0.2} gap={0.12}>{data.map(([Icon,t,p],i)=><StaggerItem className={`process-row ${i%2?"right":"left"}`} key={t}><div className="process-icon"><Icon/></div><div className="process-copy"><h3>{t}</h3><p>{p}</p>{i<3&&<div className="process-dots">•••</div>}</div></StaggerItem>)}</Stagger></div></section>
 }

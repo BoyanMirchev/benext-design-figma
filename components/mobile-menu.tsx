@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";import { useRouter } from "next/navigation";
 import { Search, X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
@@ -20,7 +20,17 @@ const mobileLinks: { label: string; href: string }[] = [
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const router = useRouter();
   const reduce = useReducedMotion();
+
+  function submitSearch(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const value = query.trim();
+    if (!value) return;
+    setOpen(false);
+    router.push(`/search?q=${encodeURIComponent(value)}`);
+  }
 
   useEffect(() => {
     if (!open) return;
@@ -75,10 +85,18 @@ export function MobileMenu() {
             </button>
           </div>
 
-          <div className="mobile-panel__search">
-            <input type="search" placeholder="Input text" aria-label="Търсене" />
-            <Search size={19.5} strokeWidth={1.5} aria-hidden="true" />
-          </div>
+          <form className="mobile-panel__search" onSubmit={submitSearch}>
+            <input
+              type="search"
+              placeholder="Търсене"
+              aria-label="Търсене"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+            />
+            <button type="submit" aria-label="Изпрати търсене">
+              <Search size={19.5} strokeWidth={1.5} aria-hidden="true" />
+            </button>
+          </form>
 
           <motion.nav
             className="mobile-panel__nav"
@@ -100,10 +118,10 @@ export function MobileMenu() {
           </motion.nav>
 
           <div className="mobile-panel__legal">
-            <Link href="#" onClick={() => setOpen(false)}>
+            <Link href="/terms" onClick={() => setOpen(false)}>
               Общи условия
             </Link>
-            <Link href="#" onClick={() => setOpen(false)}>
+            <Link href="/privacy" onClick={() => setOpen(false)}>
               Политика
             </Link>
           </div>
