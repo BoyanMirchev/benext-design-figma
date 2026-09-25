@@ -15,7 +15,8 @@ export function Button({ href, children, secondary = false }: { href: string; ch
 
 const services = [
   [Monitor, "Уеб дизайн"], [ShoppingCart, "eCommerce"], [Banknote, "Счетоводни\nсистеми"],
-  [Search, "SEO оптимизация"], [Megaphone, "Google & Meta Ads"], [Truck, "Системи за\nЛогистика"]
+  [Truck, "Системи за\nЛогистика"], [LayoutDashboard, "Админ Панели"], [Code2, "ТРЗ системи"],
+  [Search, "SEO оптимизация"], [Megaphone, "Google & Meta Ads"]
 ] as const;
 
 export function ServicesStrip() {
@@ -99,6 +100,6 @@ export function CheckItem({children,checked=false}:{children:React.ReactNode;che
 export function ContactFacts(){return <div className="contact-facts"><div><span><MapPin/></span><a>Княз Борис 1 127, София</a></div><div><span><Phone/></span><a>+359 888 82 634</a></div><div><span><AtSign/></span><a>benextbg@gmail.com</a></div></div>}
 
 export function Process(){
- const data=[[Route,"1. Откриване","Опознаваме вашия бизнес, цели и предизвикателства. Така можем да предложим решение, което е съобразено с реалните ви нужди."],[BarChart3,"2. Дефиниране","Създаваме ясна стратегия и план за правилното решение."],[Lightbulb,"3. Разработка","Проектираме, разработваме и интегрираме всичко необходимо: от дизайна и уеб платформата до ecommerce, SEO, реклами, счетоводни, ТРЗ и логистични системи."],[Play,"4. Старт","Следим представянето, отстраняваме евентуални проблеми и при необходимост оптимизираме системата, за да продължава да носи стойност за бизнеса Ви."] ] as const;
+ const data=[[Route,"1. Откриване","Опознаваме вашия бизнес, цели и предизвикателства. Така можем да предложи�� решение, което е съобразено с реалните ви нужди."],[BarChart3,"2. Дефиниране","Създаваме ясна стратегия и план за правилното решение."],[Lightbulb,"3. Разработка","Проектираме, разработваме и интегрираме всичко необходимо: от дизайна и уеб платформата до ecommerce, SEO, реклами, счетоводни, ТРЗ и логистични системи."],[Play,"4. Старт","Следим представянето, отстраняваме евентуални проблеми и при необходимост оптимизираме системата, за да продължава да носи стойност за бизнеса Ви."] ] as const;
  return <section className="process"><div className="shell process__shell"><Reveal as="h2" className="section-title centered">Нашият процес</Reveal><Stagger amount={0.2} gap={0.12}>{data.map(([Icon,t,p],i)=><StaggerItem className={`process-row ${i%2?"right":"left"}`} key={t}><div className="process-icon"><Icon/></div><div className="process-copy"><h3>{t}</h3><p>{p}</p>{i<3&&<div className="process-dots">•••</div>}</div></StaggerItem>)}</Stagger></div></section>
 }
