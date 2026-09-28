@@ -80,8 +80,8 @@ export function RecommendationPanel() {
 const footerNav = [["Услуги","/services"],["Курсове","/courses"],["Проекти","/projects"],["Контакти","/contacts"],["За нас","/about"],["Кариери","/careers"]] as const;
 const footerLegal = [["Политика","/privacy"],["Общи условия","/terms"],["Легално","/legal"],["Карта","/sitemap"]] as const;
 
-export function Footer() {
-  return <footer className="footer"><div className="shell footer__inner">
+export function Footer({ global = false }: { global?: boolean } = {}) {
+  return <footer className={`footer${global ? " footer--global" : ""}`}><div className="shell footer__inner">
     <nav className="footer__nav" aria-label="Футър навигация">{footerNav.map(([label,href])=><Link href={href} key={label}>{label}</Link>)}</nav>
     <img className="footer-logo" src="/assets/benext-mark.png" alt="BeNeXt"/>
     <nav className="footer__legal" aria-label="Правна информация">{footerLegal.map(([label,href])=><Link href={href} key={label}>{label}</Link>)}</nav>
