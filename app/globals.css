@@ -491,3 +491,12 @@ button.icon-btn{cursor:pointer;font:inherit}
   .service-card:nth-child(5)::after{height:146px;background:url('/assets/admin-panel.jpg') center top/cover}
   .home-services .button{min-height:48px;padding:14px 22px}
 }
+
+.service-card svg{color:#a3d6ff;stroke:none}
+@media(min-width:1024px){
+  .service-card svg{width:60px;height:60px}
+  .service-card:not(:nth-child(1)):not(:nth-child(5)){flex-wrap:nowrap}
+  .service-card:nth-child(1)::after,.service-card:nth-child(5)::after{flex:0 0 calc(100% + 28px);margin:0 -20px 0 -8px}
+  .service-card:nth-child(1)::after{height:132px}
+  .service-card:nth-child(5)::after{height:145px}
+}
