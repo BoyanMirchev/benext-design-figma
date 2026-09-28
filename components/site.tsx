@@ -5,6 +5,10 @@ import {
   MousePointerClick, ChartNoAxesColumnIncreasing, GraduationCap,
   CircleCheck, Circle, Route, BarChart3, Lightbulb, Play, ChevronRight
 } from "lucide-react";
+import {
+  Monitor as PhMonitor, ShoppingCartSimple as PhShoppingCartSimple, Money as PhMoney,
+  Truck as PhTruck, Coins as PhCoins, MagnifyingGlass as PhMagnifyingGlass, Megaphone as PhMegaphone
+} from "@phosphor-icons/react/dist/ssr";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 
 export { Header } from "@/components/site-header";
@@ -14,9 +18,9 @@ export function Button({ href, children, secondary = false }: { href: string; ch
 }
 
 const services = [
-  [Monitor, "Уеб дизайн"], [ShoppingCart, "eCommerce"], [Banknote, "Счетоводни\nСистеми"],
-  [Truck, "Системи за\nЛогистика"], [LayoutDashboard, "Админ Панели"], [Coins, "Трз системи"],
-  [Search, "SEO оптимизация"], [Megaphone, "Google & Meta Ads"]
+  [PhMonitor, "Уеб дизайн"], [PhShoppingCartSimple, "eCommerce"], [PhMoney, "Счетоводни\nСистеми"],
+  [PhTruck, "Системи за\nЛогистика"], [LayoutDashboard, "Админ Панели"], [PhCoins, "Трз системи"],
+  [PhMagnifyingGlass, "SEO оптимизация"], [PhMegaphone, "Google & Meta Ads"]
 ] as const;
 
 export function ServicesStrip() {
