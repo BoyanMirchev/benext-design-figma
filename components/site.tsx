@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {
   Search, Monitor, ShoppingCart, Banknote, Megaphone, Truck,
-  Code2, Workflow, MapPin, Phone, AtSign, WandSparkles, LayoutDashboard,
+  Code2, Workflow, MapPin, Phone, AtSign, LayoutDashboard,
   MousePointerClick, ChartNoAxesColumnIncreasing, GraduationCap, ArrowRight,
   CircleCheck, Circle, Route, BarChart3, Lightbulb, Play, ChevronDown, ChevronRight
 } from "lucide-react";
@@ -62,7 +62,11 @@ export function BigCTA() {
   return <section className="cta-section"><div className="shell"><Reveal className="cta-card" y={28}><h2>Нека създадем нещо добро заедно.</h2><Button href="/contacts">Свържете се с нас</Button></Reveal></div></section>;
 }
 
-const menu = [[WandSparkles,"Препоръчано"],[LayoutDashboard,"Стартирай проекта си"],[MousePointerClick,"Достиг на клиенти"],[ChartNoAxesColumnIncreasing,"Автоматизация"],[GraduationCap,"Курсове"]] as const;
+function ShootingStar({ size = 24 }: { size?: number }) {
+  return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15.5 2.5 17.03 6.4 21.21 6.65 17.97 9.3 19.03 13.35 15.5 11.1 11.97 13.35 13.03 9.3 9.79 6.65 13.97 6.4Z"/><path d="M9.5 13.5 3 20"/><path d="M7.5 11.5 3 16"/><path d="M11.5 16 7 20.5"/></svg>;
+}
+
+const menu = [[ShootingStar,"Препоръчано"],[LayoutDashboard,"Стартирай проекта си"],[MousePointerClick,"Достиг на клиенти"],[ChartNoAxesColumnIncreasing,"Автоматизация"],[GraduationCap,"Курсове"]] as const;
 const links = [
   ["Разгледайте нашето портфолио","Вижте нашите успешни проекти"],
   ["Научете повече за нашите услуги","Свържете се с нас за запитвания"],
