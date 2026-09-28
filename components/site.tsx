@@ -81,11 +81,12 @@ const footerNav = [["Услуги","/services"],["Курсове","/courses"],["
 const footerLegal = [["Политика","/privacy"],["Общи условия","/terms"],["Легално","/legal"],["Карта","/sitemap"]] as const;
 
 export function Footer({ global = false }: { global?: boolean } = {}) {
-  return <footer className={`footer${global ? " footer--global" : ""}`}><div className="shell footer__inner">
-    <nav className="footer__nav" aria-label="Футър навигация">{footerNav.map(([label,href])=><Link href={href} key={label}>{label}</Link>)}</nav>
-    <img className="footer-logo" src="/assets/benext-mark.png" alt="BeNeXt"/>
-    <nav className="footer__legal" aria-label="Правна информация">{footerLegal.map(([label,href])=><Link href={href} key={label}>{label}</Link>)}</nav>
+  if (global) return <footer className="footer footer--global"><div className="shell footer__inner">
+    <nav className="footer__nav" aria-label="Футър навигация">{menu.map(([Icon,label],i)=><Link href={footerNav[i]?.[1] ?? "#"} className={i===0 ? "is-active" : ""} key={label}><Icon size={18}/><span>{label}</span></Link>)}</nav>
+    <div className="footer__recommendations"><div className="footer__recommendation-grid">{links.map(([title,description])=><Link href="#" className="footer__recommendation" key={title}><span><strong>{title}</strong><small>{description}</small></span><ChevronRight size={20}/></Link>)}</div></div>
+    <nav className="footer__legal" aria-label="Правна информация">{[["Условия за използване","/terms"],["Политика за личните данни","/privacy"],["©БиИнк 2026","#"]].map(([label,href])=><Link href={href} key={label}>{label}</Link>)}</nav>
   </div></footer>;
+  return <footer className="footer"><div className="shell footer__inner"><nav className="footer__nav" aria-label="Футър навигация">{footerNav.map(([label,href])=><Link href={href} key={label}>{label}</Link>)}</nav><img className="footer-logo" src="/assets/benext-mark.png" alt="BeNeXt"/><nav className="footer__legal" aria-label="Правна информация">{footerLegal.map(([label,href])=><Link href={href} key={label}>{label}</Link>)}</nav></div></footer>;
 }
 
 export function PageEnd({cta=true}:{cta?:boolean}) { return <>{cta&&<BigCTA/>}<RecommendationPanel/><Footer/></> }
