@@ -476,3 +476,18 @@ button.icon-btn{cursor:pointer;font:inherit}
 @keyframes header-search-in{from{opacity:0;transform:scaleX(.96)}to{opacity:1;transform:none}}
 @media (max-width:720px){.header-search{display:none}}
 @media (prefers-reduced-motion: reduce){.header-search{animation:none}}
+
+@media(min-width:1024px){
+  .home-services .section-title{font-size:40px;line-height:1.2;margin:0 0 40px}
+  .service-grid{grid-template-columns:repeat(2,288px);justify-content:center;gap:10px 8px;margin:0 0 34px}
+  .service-card{height:128px;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;align-content:center;gap:0;padding:0 36px 0 24px;border-radius:16px;border:1px solid rgba(214,228,255,.32);background:radial-gradient(120% 90% at 100% 0%,rgba(84,120,160,.28) 0%,rgba(84,120,160,0) 55%),linear-gradient(160deg,#071a36 0%,#061934 55%,#071f3f 100%);font-size:17px;font-weight:700;line-height:1.4;letter-spacing:.01em}
+  .service-card>span{order:1;text-align:center}
+  .service-card svg{order:2;width:54px;height:54px;stroke:var(--secondary);stroke-width:1.7;flex:none}
+  .service-card:nth-child(1),.service-card:nth-child(5){height:266px;grid-row:span 2;align-content:space-between;padding:40px 36px 16px 24px}
+  .service-card:nth-child(1)::after,.service-card:nth-child(5)::after{content:"";order:3;display:block;flex:0 0 calc(100% + 60px);margin:0 -20px 0 -40px;border-radius:0}
+  .service-card:nth-child(1)::after{height:132px;background:url('/assets/project-aunature.jpg') center/cover}
+  .service-card:nth-child(5){justify-content:center;padding-top:30px}
+  .service-card:nth-child(5) svg{display:none}
+  .service-card:nth-child(5)::after{height:146px;background:url('/assets/admin-panel.jpg') center top/cover}
+  .home-services .button{min-height:48px;padding:14px 22px}
+}

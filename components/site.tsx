@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {
   Search, Monitor, ShoppingCart, Banknote, Megaphone, Truck,
-  Code2, Workflow, MapPin, Phone, AtSign, LayoutDashboard,
+  Code2, Coins, Workflow, MapPin, Phone, AtSign, LayoutDashboard,
   MousePointerClick, ChartNoAxesColumnIncreasing, GraduationCap, ArrowRight,
   CircleCheck, Circle, Route, BarChart3, Lightbulb, Play, ChevronDown, ChevronRight
 } from "lucide-react";
@@ -14,8 +14,8 @@ export function Button({ href, children, secondary = false }: { href: string; ch
 }
 
 const services = [
-  [Monitor, "Уеб дизайн"], [ShoppingCart, "eCommerce"], [Banknote, "Счетоводни\nсистеми"],
-  [Truck, "Системи за\nЛогистика"], [LayoutDashboard, "Админ Панели"], [Code2, "ТРЗ системи"],
+  [Monitor, "Уеб дизайн"], [ShoppingCart, "eCommerce"], [Banknote, "Счетоводни\nСистеми"],
+  [Truck, "Системи за\nЛогистика"], [LayoutDashboard, "Админ Панели"], [Coins, "Трз системи"],
   [Search, "SEO оптимизация"], [Megaphone, "Google & Meta Ads"]
 ] as const;
 
@@ -23,7 +23,7 @@ export function ServicesStrip() {
   return <section className="home-services section-shadow"><div className="shell">
     <Reveal as="h2" className="section-title centered">Ние можем да помогнем</Reveal>
     <Stagger className="service-grid">{services.map(([Icon,t])=><StaggerItem className="service-card" key={t}><Icon/><span>{t.split("\n").map((x,i)=><span key={i}>{x}{i===0&&t.includes("\n")?<br/>:null}</span>)}</span></StaggerItem>)}</Stagger>
-    <Reveal className="centered"><Button href="/services">Научете повече</Button></Reveal>
+    <Reveal className="centered"><Button href="/services" secondary>Научете повече</Button></Reveal>
   </div></section>;
 }
 
