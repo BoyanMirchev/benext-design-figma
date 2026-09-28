@@ -41,9 +41,19 @@ const clientLogos = [
 export function Clients() {
   return <section className="clients section-shadow"><div className="shell clients__grid">
     <Reveal><h2 className="section-title">Нашите клиенти</h2><p>Компаниите, които ни имат доверие.<br/>Станете част от тях.</p></Reveal>
-    <Stagger className="clients__logos">{clientLogos.map(c=>(
-      <StaggerItem key={c.slug} className="client-logo"><img src={`/assets/clients/${c.slug}.png`} alt={c.name}/></StaggerItem>
-    ))}</Stagger>
+    <div className="clients__marquee">
+      {[0,1].map(row=>(
+        <div key={row} className={`marquee-row${row?" marquee-row--offset":""}`}>
+          <div className="marquee-track">
+            {Array.from({length:4},()=>clientLogos).flat().map((c,i)=>(
+              <div key={`${c.slug}-${i}`} className={`client-logo client-logo--${c.slug}`} aria-hidden={row>0||i>=clientLogos.length}>
+                <img src={`/assets/clients/${c.slug}.png`} alt={row>0||i>=clientLogos.length?"":c.name}/>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
   </div></section>;
 }
 
