@@ -92,10 +92,10 @@
   .service-card>span{order:1}
   .service-card:nth-child(1){height:367px;grid-row:span 2}
   .service-card:nth-child(1) svg{display:none}
-  .service-card:nth-child(1)::after{content:"";display:block;order:2;width:calc(100% - 12px);height:137px;margin-top:2px;background:url('/assets/project-aunature.jpg') center/cover;border-radius:0}
+  .service-card:nth-child(1)::after{content:"";display:block;order:2;width:calc(100% - 12px);height:137px;margin-top:2px;background:url('/assets/services/web-design.png') center/cover;border-radius:0}
   .service-card:nth-child(5){height:367px;grid-row:span 2}
   .service-card:nth-child(5) svg{display:none}
-  .service-card:nth-child(5)::after{content:"";display:block;order:2;width:calc(100% - 12px);height:190px;margin-top:2px;background:url('/assets/admin-panel.jpg') center/cover;border-radius:0}
+  .service-card:nth-child(5)::after{content:"";display:block;order:2;width:calc(100% - 12px);height:190px;margin-top:2px;background:url('/assets/services/admin-panel.png') center/cover;border-radius:0}
   .home-services .button{background:#a3d6ff;color:#07199e;min-height:52px;padding:14px 24px}
   .clients,.featured,.process,.technologies,.cta-section,.recommendations,.footer{display:none}
 }
@@ -485,10 +485,10 @@ button.icon-btn{cursor:pointer;font:inherit}
   .service-card svg{order:2;width:54px;height:54px;stroke:var(--secondary);stroke-width:1.7;flex:none}
   .service-card:nth-child(1),.service-card:nth-child(5){height:266px;grid-row:span 2;align-content:space-between;padding:40px 36px 16px 24px}
   .service-card:nth-child(1)::after,.service-card:nth-child(5)::after{content:"";order:3;display:block;flex:0 0 calc(100% + 60px);margin:0 -20px 0 -40px;border-radius:0}
-  .service-card:nth-child(1)::after{height:132px;background:url('/assets/project-aunature.jpg') center/cover}
+  .service-card:nth-child(1)::after{height:132px;background:url('/assets/services/web-design.png') center/cover}
   .service-card:nth-child(5){justify-content:center;padding-top:30px}
   .service-card:nth-child(5) svg{display:none}
-  .service-card:nth-child(5)::after{height:146px;background:url('/assets/admin-panel.jpg') center top/cover}
+  .service-card:nth-child(5)::after{height:146px;background:url('/assets/services/admin-panel.png') center top/cover}
   .home-services .button{min-height:48px;padding:14px 22px}
 }
 
