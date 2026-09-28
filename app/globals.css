@@ -461,3 +461,18 @@ input,select,textarea{transition:border-color .2s ease,box-shadow .2s ease,backg
   .search-results{grid-template-columns:1fr}
   .search-section{padding:36px 0 64px}
 }
+
+.header-search{flex:1;display:flex;align-items:center;height:42px;margin:0 16px 0 64px;padding:0 8px 0 16px;border-radius:999px;background:#fff;border:1px solid #4a4a52;color:var(--ink);animation:header-search-in .25s ease}
+.header-search input{flex:1;min-width:0;height:100%;border:0;background:transparent;outline:none;font:inherit;font-size:16px;color:var(--ink)}
+.header-search input::placeholder{color:#55555c}
+.header-search input::-webkit-search-cancel-button{display:none}
+.header-search__submit{width:34px;height:34px;display:grid;place-items:center;border:0;background:transparent;color:var(--ink);cursor:pointer;border-radius:50%}
+.header-search:focus-within{border-color:var(--accent)}
+.header--searching .header__actions .icon-btn,.header--searching.header--stuck .header__actions .icon-btn{border-color:var(--accent)}
+.icon-btn--close{cursor:pointer;background:rgba(255,255,255,.35)}
+.header--overlay .icon-btn--close{background:rgba(255,255,255,.3)}
+.header--overlay.header--stuck .icon-btn--close,.header:not(.header--overlay) .icon-btn--close{background:#f4f5f8}
+button.icon-btn{cursor:pointer;font:inherit}
+@keyframes header-search-in{from{opacity:0;transform:scaleX(.96)}to{opacity:1;transform:none}}
+@media (max-width:720px){.header-search{display:none}}
+@media (prefers-reduced-motion: reduce){.header-search{animation:none}}
