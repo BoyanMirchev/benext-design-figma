@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { type FormEvent, useEffect, useState } from "react";
+import { type AnimationEvent, type FormEvent, useEffect, useState } from "react";
 import { Search, UserRound, X } from "lucide-react";
 import { MobileMenu } from "@/components/mobile-menu";
 
@@ -10,6 +10,21 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [searchClosing, setSearchClosing] = useState(false);
+
+  function closeSearch() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setSearchOpen(false);
+      return;
+    }
+    setSearchClosing(true);
+  }
+
+  function finishClose(e: AnimationEvent<HTMLFormElement>) {
+    if (!searchClosing || e.target !== e.currentTarget) return;
+    setSearchClosing(false);
+    setSearchOpen(false);
+  }
 
   useEffect(() => {
     const hero = overlay
@@ -31,7 +46,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
   useEffect(() => {
     if (!searchOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setSearchOpen(false);
+      if (e.key === "Escape") closeSearch();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -56,7 +71,12 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
       <div className="shell header__inner">
         <Link href="/" className="logo" aria-label="BeNeXt"><img src="/assets/benext-mark.png" alt="BeNeXt" /></Link>
         {searchOpen ? (
-          <form className="header-search" role="search" onSubmit={submitSearch}>
+          <form
+            className={searchClosing ? "header-search header-search--closing" : "header-search"}
+            role="search"
+            onSubmit={submitSearch}
+            onAnimationEnd={finishClose}
+          >
             <input
               type="search"
               name="q"
@@ -82,7 +102,8 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
               type="button"
               className="icon-btn icon-btn--close"
               aria-label="Затвори търсенето"
-              onClick={() => setSearchOpen(false)}
+              onClick={closeSearch}
+              disabled={searchClosing}
             >
               <X size={20} />
             </button>

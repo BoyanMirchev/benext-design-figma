@@ -477,8 +477,12 @@ button.icon-btn{cursor:pointer;font:inherit}
 .header-search > *{animation:header-search-content .3s ease .2s both}
 @keyframes header-search-in{from{clip-path:inset(0 0 0 calc(100% - 42px) round 999px);opacity:.4}to{clip-path:inset(0 0 0 0 round 999px);opacity:1}}
 @keyframes header-search-content{from{opacity:0}to{opacity:1}}
+.header-search--closing{animation:header-search-out .4s cubic-bezier(.64,0,.78,0) both}
+.header-search--closing > *{animation:header-search-content-out .15s ease both}
+@keyframes header-search-out{from{clip-path:inset(0 0 0 0 round 999px);opacity:1}to{clip-path:inset(0 0 0 calc(100% - 42px) round 999px);opacity:.4}}
+@keyframes header-search-content-out{from{opacity:1}to{opacity:0}}
 @media (max-width:720px){.header-search{display:none}}
-@media (prefers-reduced-motion: reduce){.header-search,.header-search > *{animation:none}}
+@media (prefers-reduced-motion: reduce){.header-search,.header-search > *,.header-search--closing,.header-search--closing > *{animation:none}}
 
 @media(min-width:1024px){
   .home-services .section-title{font-size:40px;line-height:1.2;margin:0 0 40px}
