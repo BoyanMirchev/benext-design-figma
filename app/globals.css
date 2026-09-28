@@ -473,9 +473,12 @@ input,select,textarea{transition:border-color .2s ease,box-shadow .2s ease,backg
 .header--overlay .icon-btn--close{background:rgba(255,255,255,.3)}
 .header--overlay.header--stuck .icon-btn--close,.header:not(.header--overlay) .icon-btn--close{background:#f4f5f8}
 button.icon-btn{cursor:pointer;font:inherit}
-@keyframes header-search-in{from{opacity:0;transform:scaleX(.96)}to{opacity:1;transform:none}}
+.header-search{animation:header-search-in .45s cubic-bezier(.22,1,.36,1) both}
+.header-search > *{animation:header-search-content .3s ease .2s both}
+@keyframes header-search-in{from{clip-path:inset(0 0 0 calc(100% - 42px) round 999px);opacity:.4}to{clip-path:inset(0 0 0 0 round 999px);opacity:1}}
+@keyframes header-search-content{from{opacity:0}to{opacity:1}}
 @media (max-width:720px){.header-search{display:none}}
-@media (prefers-reduced-motion: reduce){.header-search{animation:none}}
+@media (prefers-reduced-motion: reduce){.header-search,.header-search > *{animation:none}}
 
 @media(min-width:1024px){
   .home-services .section-title{font-size:40px;line-height:1.2;margin:0 0 40px}
