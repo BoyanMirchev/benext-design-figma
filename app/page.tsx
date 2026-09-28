@@ -1,4 +1,4 @@
-import { Header, ServicesStrip, Clients, ProjectCard, projects, Process, BigCTA, RecommendationPanel, Footer, Button } from "@/components/site";
+import { Header, ServicesStrip, Clients, ProjectCard, projects, Process, BigCTA, Footer, Button } from "@/components/site";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 
 export default function HomePage(){return <main>
@@ -13,7 +13,7 @@ export default function HomePage(){return <main>
   </div></section>
   <Process/>
   <section className="technologies section-shadow"><Reveal as="h2" className="section-title centered">Технологии, които използваме</Reveal><Stagger className="tech-row" gap={0.05} amount={0.3}>{tech.map(t=><StaggerItem key={t.name}><img src={`/assets/tech/${t.slug}.svg`} alt={t.name}/></StaggerItem>)}</Stagger></section>
-  <BigCTA/><RecommendationPanel/><Footer/>
+  <BigCTA/><Footer/>
 </main>}
 function LinkButton(){return <a className="soft-pill" href="/projects">Разгледайте всички <span>⦿</span></a>}
 

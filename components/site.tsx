@@ -1,9 +1,9 @@
 import Link from "next/link";
 import {
   Search, Monitor, ShoppingCart, Banknote, Megaphone, Truck,
-  Code2, Workflow, MapPin, Phone, AtSign, LayoutDashboard,
-  MousePointerClick, ChartNoAxesColumnIncreasing, GraduationCap, ArrowRight,
-  CircleCheck, Circle, Route, BarChart3, Lightbulb, Play, ChevronDown, ChevronRight
+  Code2, Coins, Workflow, MapPin, Phone, AtSign, LayoutDashboard,
+  MousePointerClick, ChartNoAxesColumnIncreasing, GraduationCap,
+  CircleCheck, Circle, Route, BarChart3, Lightbulb, Play, ChevronRight
 } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 
@@ -14,8 +14,8 @@ export function Button({ href, children, secondary = false }: { href: string; ch
 }
 
 const services = [
-  [Monitor, "Уеб дизайн"], [ShoppingCart, "eCommerce"], [Banknote, "Счетоводни\nсистеми"],
-  [Truck, "Системи за\nЛогистика"], [LayoutDashboard, "Админ Панели"], [Code2, "ТРЗ системи"],
+  [Monitor, "Уеб дизайн"], [ShoppingCart, "eCommerce"], [Banknote, "Счетоводни\nСистеми"],
+  [Truck, "Системи за\nЛогистика"], [LayoutDashboard, "Админ Панели"], [Coins, "Трз системи"],
   [Search, "SEO оптимизация"], [Megaphone, "Google & Meta Ads"]
 ] as const;
 
@@ -23,7 +23,7 @@ export function ServicesStrip() {
   return <section className="home-services section-shadow"><div className="shell">
     <Reveal as="h2" className="section-title centered">Ние можем да помогнем</Reveal>
     <Stagger className="service-grid">{services.map(([Icon,t])=><StaggerItem className="service-card" key={t}><Icon/><span>{t.split("\n").map((x,i)=><span key={i}>{x}{i===0&&t.includes("\n")?<br/>:null}</span>)}</span></StaggerItem>)}</Stagger>
-    <Reveal className="centered"><Button href="/services">Научете повече</Button></Reveal>
+    <Reveal className="centered"><Button href="/services" secondary>Научете повече</Button></Reveal>
   </div></section>;
 }
 
@@ -74,13 +74,6 @@ const links = [
   ["Абонирайте се за нюслетъра ни","Присъединете се към нашия бюлетин"],
   ["Посетете нашия блог","Открийте новини и тенденции в индустрията"]
 ];
-export function RecommendationPanel() {
-  return <section className="recommendations"><div className="shell recommendation-grid">
-    <aside className="recommendation-menu">{menu.map(([Icon,t],i)=><div className={i===0?"rec-menu-item active":"rec-menu-item"} key={t}><Icon size={19}/><span>{t}</span>{i===0&&<ChevronDown size={20} className="rec-menu-chev"/>}</div>)}</aside>
-    <Stagger className="recommendation-card" amount={0.15}>{links.map(([a,b])=><StaggerItem as="a" href="#" className="rec-link" key={a}><span><strong>{a}</strong><small>{b}</small></span><ArrowRight size={20} className="rec-link__arrow"/><ChevronRight size={20} className="rec-link__chev"/></StaggerItem>)}</Stagger>
-  </div></section>;
-}
-
 const footerNav = [["Услуги","/services"],["Курсове","/courses"],["Проекти","/projects"],["Контакти","/contacts"],["За нас","/about"],["Кариери","/careers"]] as const;
 const footerLegal = [["Политика","/privacy"],["Общи условия","/terms"],["Легално","/legal"],["Карта","/sitemap"]] as const;
 
@@ -93,7 +86,7 @@ export function Footer({ global = false }: { global?: boolean } = {}) {
   return <footer className="footer"><div className="shell footer__inner"><nav className="footer__nav" aria-label="Футър навигация">{footerNav.map(([label,href])=><Link href={href} key={label}>{label}</Link>)}</nav><img className="footer-logo" src="/assets/benext-mark.png" alt="BeNeXt"/><nav className="footer__legal" aria-label="Правна информация">{footerLegal.map(([label,href])=><Link href={href} key={label}>{label}</Link>)}</nav></div></footer>;
 }
 
-export function PageEnd({cta=true}:{cta?:boolean}) { return <>{cta&&<BigCTA/>}<RecommendationPanel/><Footer/></> }
+export function PageEnd({cta=true}:{cta?:boolean}) { return <>{cta&&<BigCTA/>}<Footer/></> }
 
 export const serviceTop = [
   {icon:Monitor,title:"Front end разработка",text:"Създаваме интерактивни и динамични потребителски интерфейси, използвайки най-новите технологии. Всеки проект е оптимизиран за скорост и производителност."},
