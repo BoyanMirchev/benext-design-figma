@@ -454,7 +454,11 @@ button.icon-btn{cursor:pointer;font:inherit}
 .header-search--closing > *{animation:header-search-content-out .15s ease both}
 @keyframes header-search-out{from{clip-path:inset(0 0 0 0 round 999px);opacity:1}to{clip-path:inset(0 0 0 calc(100% - 42px) round 999px);opacity:.4}}
 @keyframes header-search-content-out{from{opacity:1}to{opacity:0}}
-@media (max-width:720px){.header-search{display:none}}
+@media (max-width:720px){
+  .header-search{flex:1 1 0;min-width:0;height:40px;margin:0 10px 0 14px;padding:0 4px 0 14px}
+  .header-search__submit{width:32px;height:32px}
+  .header--searching .header__actions a.icon-btn{display:none}
+}
 @media (prefers-reduced-motion: reduce){.header-search,.header-search > *,.header-search--closing,.header-search--closing > *{animation:none}}
 
 @media(min-width:1024px){
