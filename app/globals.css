@@ -568,3 +568,25 @@ button.icon-btn{cursor:pointer;font:inherit}
 
 .careers-page{background:var(--bg);padding:80px 0 72px}.careers-page h1{text-align:center;font-size:48px;line-height:1.1;margin:0}.careers-intro{text-align:center;font-size:16px;line-height:1.6;margin:32px auto 0}.careers-heading{text-align:center;margin:72px 0 48px}.careers-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 16px;max-width:1024px;margin:0 auto}.career-card{background:#fff;border-radius:15px;box-shadow:0 2px 15px rgba(206,206,206,.6);padding:32px 18px 26px;display:flex;flex-direction:column}.career-card h3{font-family:'M PLUS 1p',Arial,sans-serif;font-size:26px;line-height:1.25;font-weight:500;margin:0 0 20px}.career-card__text{font-size:16px;line-height:1.6;margin:0 0 18px;flex:1}.career-card__type{color:var(--main);font-size:16px;font-weight:500;margin:0 0 28px}.career-card .button{align-self:center}
 @media (max-width:720px){.careers-page{padding:48px 0 40px}.careers-page h1{font-size:32px}.careers-intro{font-size:14px}.careers-intro br{display:none}.careers-heading{margin:44px 0 24px;font-size:26px}.careers-grid{grid-template-columns:1fr;gap:14px}.career-card{padding:24px 18px}.career-card h3{font-size:21px;margin-bottom:12px}.career-card__text,.career-card__type{font-size:14px}.career-card__type{margin-bottom:20px}}
+
+/* Services hosting hero */
+.hosting-hero{position:relative;min-height:600px;display:flex;align-items:center;padding:110px 0 70px;background:linear-gradient(90deg,rgba(3,6,20,.72),rgba(3,6,20,.28) 65%),url('/assets/hosting-hero-earth.png') center/cover no-repeat,#03060f;color:#fff}
+body:has(.hosting-hero) .header--overlay:not(.header--stuck) .logo img{filter:brightness(0) invert(1)}
+.hosting-hero h1{font-size:46px;line-height:1.12;margin:0;color:#fff;animation:riseIn .65s cubic-bezier(.22,1,.36,1) backwards;animation-delay:.1s}
+.hosting-hero__list{margin:34px 0 0;padding:0 0 0 30px;font-size:18px;line-height:1.6;color:rgba(255,255,255,.9);animation:riseIn .65s cubic-bezier(.22,1,.36,1) backwards;animation-delay:.2s}
+.hosting-hero__cta{display:flex;align-items:center;gap:40px;margin-top:38px;flex-wrap:wrap;animation:riseIn .65s cubic-bezier(.22,1,.36,1) backwards;animation-delay:.3s}
+.hosting-hero__price{margin:0;font-size:16px;color:#fff}
+.hosting-hero__price strong{font-size:30px;margin:0 6px}
+.hosting-tabs{background:#fbfbfe}
+.hosting-tabs__inner{max-width:960px;margin:0 auto;padding:30px 24px 0;display:flex;gap:20px}
+.hosting-tab{flex:1;padding-bottom:16px;font-size:26px;color:#0b0d24;text-decoration:none;border-bottom:4px solid #a9d9ff;transition:border-color .25s}
+.hosting-tab:hover,.hosting-tab.is-active{border-color:#1e8fff}
+@media (max-width:720px){
+.hosting-hero{min-height:560px;padding:110px 0 50px;background-position:60% center}
+.hosting-hero h1{font-size:32px}
+.hosting-hero h1 br{display:none}
+.hosting-hero__list{font-size:15px;padding-left:22px}
+.hosting-hero__cta{gap:20px}
+.hosting-tabs__inner{gap:10px;padding:22px 16px 0}
+.hosting-tab{font-size:15px;padding-bottom:10px;border-bottom-width:3px;text-align:center}
+}
