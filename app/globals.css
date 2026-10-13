@@ -571,7 +571,7 @@ button.icon-btn{cursor:pointer;font:inherit}
 
 /* Services hosting hero */
 .hosting-hero{position:relative;min-height:600px;display:flex;align-items:center;padding:110px 0 70px;background:linear-gradient(90deg,rgba(3,6,20,.72),rgba(3,6,20,.28) 65%),url('/assets/hosting-hero-earth.png') center/cover no-repeat,#03060f;color:#fff}
-body:has(.hosting-hero) .header--overlay:not(.header--stuck) .logo img{filter:brightness(0) invert(1)}
+
 .hosting-hero h1{font-size:46px;line-height:1.12;margin:0;color:#fff;animation:riseIn .65s cubic-bezier(.22,1,.36,1) backwards;animation-delay:.1s}
 .hosting-hero__list{margin:34px 0 0;padding:0 0 0 30px;font-size:18px;line-height:1.6;color:rgba(255,255,255,.9);animation:riseIn .65s cubic-bezier(.22,1,.36,1) backwards;animation-delay:.2s}
 .hosting-hero__cta{display:flex;align-items:center;gap:40px;margin-top:38px;flex-wrap:wrap;animation:riseIn .65s cubic-bezier(.22,1,.36,1) backwards;animation-delay:.3s}
